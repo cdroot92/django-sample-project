@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "python.sortImports.args": ["--skip-gitignore", "-l 92"],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length=92"],
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  }
+}
