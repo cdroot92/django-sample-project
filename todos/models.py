@@ -40,15 +40,15 @@ class TagSerializer(serializers.ModelSerializer):
 
 
 class TodoListSerializer(serializers.ModelSerializer):
-    todo = TodoSerializer(many=True)
+    items = TodoSerializer(many=True, source="todo")
     tags = TagSerializer(many=True)
 
     class Meta:
         model = TodoList
-        fields = ["id", "todo", "tags"]
+        fields = ["id", "items", "tags"]
 
     def create(self, validated_data):
-        todo_data = validated_data.pop("todo")
+        todo_data = validated_data.pop("items")
         tags = validated_data.pop("tags")
         todo_list = TodoList.objects.create(**validated_data)
         for todo in todo_data:
