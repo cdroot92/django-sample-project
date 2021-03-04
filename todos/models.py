@@ -48,7 +48,7 @@ class TodoListSerializer(serializers.ModelSerializer):
         fields = ["id", "items", "tags"]
 
     def create(self, validated_data):
-        todo_data = validated_data.pop("items")
+        todo_data = validated_data.pop("todo")
         tags = validated_data.pop("tags")
         todo_list = TodoList.objects.create(**validated_data)
         for todo in todo_data:
